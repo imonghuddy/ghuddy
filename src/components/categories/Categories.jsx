@@ -3,6 +3,7 @@ import CategoryBox from "./CategoryBox";
 import Container from "../../shared/Container";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Pagination } from 'swiper/modules';
 
 // Import Swiper styles
 import "swiper/css";
@@ -53,10 +54,35 @@ const Categories = () => {
       {/* <div className="pt-16 flex flex-row items-center justify-between overflow-x-auto"> */}
       <div className="pt-16">
         <Swiper
-          spaceBetween={50}
-          slidesPerView={windowWidth <= 640 ? 5 : windowWidth <= 992 ? 6 : 8}
-          //onSlideChange={() => console.log("slide change")}
-          //onSwiper={(swiper) => console.log(swiper)}
+          // spaceBetween={50}
+          // slidesPerView={windowWidth <= 640 ? 5 : windowWidth <= 992 ? 6 : 8}
+
+          slidesPerView={"auto"}
+                        centeredSlides={false}
+                         spaceBetween={0}
+                        freeMode={true}
+                        grabCursor={true}
+                        modules={[FreeMode, Pagination]}
+                        className="mySwiper"
+
+                        breakpoints={{
+                          // when window width is >= 640px
+                          375: {
+                            width: 375,
+                            slidesPerView: 5,
+                          },
+                          480: {
+                            width: 480,
+                            slidesPerView: 7,
+                          },
+                          // when window width is >= 768px
+                          // 768: {
+                          //   width: 768,
+                          //   slidesPerView: 7,
+                          // },
+                          
+                        }}
+          
         >
           {categoriesData.map((item) => (
             <SwiperSlide key={item.label} className="swiper-slide-margin">

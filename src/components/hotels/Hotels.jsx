@@ -10,6 +10,7 @@ import { useContext, useEffect, useState } from "react";
 import HotelsBox from "./HotelsBox";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Navigation } from "swiper/modules";
+import { FreeMode, Pagination } from 'swiper/modules';
 
 const Hotels = () => {
   const { hotels, activeCategory } = useContext(AuthContext);
@@ -45,33 +46,57 @@ const Hotels = () => {
 
       <Swiper
       id="customSwiper"
-        spaceBetween={50}
-        slidesPerView={
-          windowWidth <= 460 
-            ? 1.3 
-            : windowWidth <= 576
-            ? 2
-            : windowWidth <= 768
-            ? 2.1
-            : windowWidth <= 992
-            ? 3
-            : windowWidth <= 1200
-            ? 3.5 : 
-            windowWidth <= 1400
-            ? 4.2
-            : 5
-        }
+        // spaceBetween={50}
         // slidesPerView={
-        //   windowWidth <= 200 ? 1 :
-        //   windowWidth <= 768 ? 1.3 :
-        //   windowWidth <= 1024? 2.5 :
-        //   windowWidth <= 1024 ? 3.5 : 4
+        //   windowWidth <= 460 
+        //     ? 1.3 
+        //     : windowWidth <= 576
+        //     ? 2
+        //     : windowWidth <= 768
+        //     ? 2.1
+        //     : windowWidth <= 992
+        //     ? 3
+        //     : windowWidth <= 1200
+        //     ? 3.5 : 
+        //     windowWidth <= 1400
+        //     ? 4.2
+        //     : 5
         // }
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-        modules={[Navigation]}
-        navigation={true}
-        className="mySwiper custom-swiper"
+        
+        // slidesPerView={'auto'}
+        // onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // modules={[Navigation]}
+        // navigation={true}
+        // className="mySwiper custom-swiper"
+
+
+        slidesPerView={"auto"}
+                        centeredSlides={false}
+                         spaceBetween={0}
+                        freeMode={true}
+                        grabCursor={true}
+                        modules={[FreeMode, Pagination]}
+                        className="mySwiper"
+
+                        breakpoints={{
+                          // when window width is >= 640px
+                          375: {
+                            width: 375,
+                            slidesPerView: 1.3,
+                          },
+                          480: {
+                            width: 480,
+                            slidesPerView: 1.6,
+                          },
+                          // when window width is >= 768px
+                          768: {
+                            width: 768,
+                            slidesPerView: 2.5,
+                          },
+                          
+                        }}
+
       >
         {/* <span slot="container-start">Top Hotel</span> */}
 
@@ -82,12 +107,19 @@ const Hotels = () => {
             <p className="">No {activeCategory} Found!</p>
           </div>
         ) : (
-          hotels.map((item) => (
-            <SwiperSlide key={item.rpredi}>
-              <HotelsBox hotelData={item}></HotelsBox>
-            </SwiperSlide>
-            // <SwiperSlide key={item.name}>Slide 1</SwiperSlide>
-          ))
+          
+            
+                 hotels.map((item) => (
+              
+                  <SwiperSlide key={item.rpredi}>
+                    <HotelsBox hotelData={item}></HotelsBox>
+                  </SwiperSlide>
+               
+                  // <SwiperSlide key={item.name}>Slide 1</SwiperSlide>
+                ))
+            
+ 
+       
         )}
       </Swiper>
     </Container>

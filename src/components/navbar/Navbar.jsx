@@ -21,7 +21,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="fixed w-full bg-white z-10 shadow-sm dark:bg-teal-600 dark:text-white">
+    <div className="fixed w-full bg-bg-white z-20 shadow-sm dark:bg-teal-600 dark:text-white">
       <div className="py-4 border-b-[1px]">
         <Container>
           <div className="flex items-center justify-between">
