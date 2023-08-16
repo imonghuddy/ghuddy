@@ -1,0 +1,22 @@
+.active-category {
+    opacity: 1 !important;
+    font-weight: 500;
+    color: black;
+}
+
+.not-active{
+    /* opacity: 0.50 !important; */
+    font-weight: 400;
+}
+
+.swiper-slide-margin {
+    margin-right: 24px !important;
+    width: calc((100% - 24px * 8) / 8);
+  }
+
+/* @media (max-width: 768px) {
+    .some-element {
+        font-size: 14px;
+        color: #666;
+    }
+} */
